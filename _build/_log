@@ -1,0 +1,36 @@
+### Starting build.
+# Target: C4_mainT.ml.depends, tags: { extension:ml, file:C4_mainT.ml, ocaml, ocamldep, quiet, traverse }
+/usr/bin/ocamldep.opt -modules C4_mainT.ml > C4_mainT.ml.depends # cached
+# Target: C4_eval.ml.depends, tags: { extension:ml, file:C4_eval.ml, ocaml, ocamldep, quiet, traverse }
+/usr/bin/ocamldep.opt -modules C4_eval.ml > C4_eval.ml.depends # cached
+# Target: C4_rep.ml.depends, tags: { extension:ml, file:C4_rep.ml, ocaml, ocamldep, quiet, traverse }
+/usr/bin/ocamldep.opt -modules C4_rep.ml > C4_rep.ml.depends # cached
+# Target: Representation.mli.depends, tags: { extension:mli, file:Representation.mli, ocaml, ocamldep, quiet, traverse }
+/usr/bin/ocamldep.opt -modules Representation.mli > Representation.mli.depends # cached
+# Target: Representation.cmi, tags: { byte, compile, extension:mli, file:Representation.mli, interf, ocaml, quiet, traverse }
+/usr/bin/ocamlc.opt -c -o Representation.cmi Representation.mli # cached
+# Target: C4_rep.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:C4_rep.cmo, file:C4_rep.ml, implem, ocaml, quiet, traverse }
+/usr/bin/ocamlc.opt -c -o C4_rep.cmo C4_rep.ml # cached
+# Target: C4_eval.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:C4_eval.cmo, file:C4_eval.ml, implem, ocaml, quiet, traverse }
+/usr/bin/ocamlc.opt -c -o C4_eval.cmo C4_eval.ml # cached
+# Target: C4_text.ml.depends, tags: { extension:ml, file:C4_text.ml, ocaml, ocamldep, quiet, traverse }
+/usr/bin/ocamldep.opt -modules C4_text.ml > C4_text.ml.depends # cached
+# Target: C4_text.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:C4_text.cmo, file:C4_text.ml, implem, ocaml, quiet, traverse }
+/usr/bin/ocamlc.opt -c -o C4_text.cmo C4_text.ml # cached
+# Target: FMain.ml.depends, tags: { extension:ml, file:FMain.ml, ocaml, ocamldep, quiet, traverse }
+/usr/bin/ocamldep.opt -modules FMain.ml > FMain.ml.depends # cached
+# Target: Skeleton.mli.depends, tags: { extension:mli, file:Skeleton.mli, ocaml, ocamldep, quiet, traverse }
+/usr/bin/ocamldep.opt -modules Skeleton.mli > Skeleton.mli.depends # cached
+# Target: Skeleton.cmi, tags: { byte, compile, extension:mli, file:Skeleton.mli, interf, ocaml, quiet, traverse }
+/usr/bin/ocamlc.opt -c -o Skeleton.cmi Skeleton.mli # cached
+# Target: FMain.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:FMain.cmo, file:FMain.ml, implem, ocaml, quiet, traverse }
+/usr/bin/ocamlc.opt -c -o FMain.cmo FMain.ml # cached
+# Target: FMinimax.ml.depends, tags: { extension:ml, file:FMinimax.ml, ocaml, ocamldep, quiet, traverse }
+/usr/bin/ocamldep.opt -modules FMinimax.ml > FMinimax.ml.depends
++ /usr/bin/ocamldep.opt -modules FMinimax.ml > FMinimax.ml.depends
+File "FMinimax.ml", line 50, characters 4-7:
+50 |     end 
+         ^^^
+Error: Syntax error
+Command exited with code 2.
+# Compilation unsuccessful.
