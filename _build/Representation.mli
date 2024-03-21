@@ -5,4 +5,5 @@ module type REPRESENTATION =
    val game_start : unit -> game
    val legal_moves: bool -> game -> move list 
    val play: bool -> move -> game -> game 
+   val print_move: move -> unit
  end ;;

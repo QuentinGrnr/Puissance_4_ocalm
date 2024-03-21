@@ -10,12 +10,14 @@ module C4_rep = struct
    type move = int 
    let col = 7 and row = 6 
    let game_start () = Array.make_matrix row col Empty 
- 
-   let legal_moves b m =   
-     let l = ref [] in 
-     for c = 0 to col-1 do if m.(row-1).(c) = Empty then l := (c+1) :: !l done;
-     !l
        
+    let legal_moves b m =   
+    let l = ref [] in 
+    for c = 0 to col-1 do if m.(row-1).(c) = Empty then l := (c+1) :: !l done;
+    (* List.iter (fun x -> print_int x; print_string " ") !l;
+    print_newline(); *)
+    !l
+         
    let augment mat c =  
      let l = ref row 
      in while !l > 0 && mat.(!l-1).(c-1) = Empty do  decr l done ; !l + 1
@@ -25,7 +27,10 @@ module C4_rep = struct
      in  mj.((augment mj cp)-1).(cp-1) <- e ; mj
  
    let play b cp m = if b then player_gen cp m A else player_gen cp m B
+
+   let print_move m = print_int m; print_string " "
  end ;;
+
 
 (* module C4_rep :
   sig

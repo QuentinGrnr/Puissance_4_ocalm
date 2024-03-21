@@ -16,7 +16,7 @@ module FMinimaxO
         | h::t -> if h > max then max_number_list_aux t h else max_number_list_aux t max
       in
       match l with
-      | [] -> failwith "empty list"
+      | [] -> failwith "Empty list"
       | h::t -> max_number_list_aux t h
     
     (* val min_number_list : 'a list -> 'a *)
@@ -27,28 +27,48 @@ module FMinimaxO
         | h::t -> if h < min then min_number_list_aux t h else min_number_list_aux t min
       in
       match l with
-      | [] -> failwith "empty list"
+      | [] -> failwith "Empty list"
       | h::t -> min_number_list_aux t h
-
+      
     (* val search : int -> int list -> 'a list -> 'a *)
-    (* cherche la position i de v dans l1 et retourne la valeur l2[i]*)
-    let rec search i l1 l2 = 
-      match l1 with
-      | [] -> failwith "empty list"
-      | h::t -> if h = i then List.nth l2 i else search i t l2
+    (* objective : return the move corresponding to the evaluation *)
+    (* il faut mieux determiner la condition d'arret *)
+
+    let rec search v l1 l2 =
+      match l1, l2 with
+      | [], _ | _, [] -> failwith "Empty list"
+      | hd1 :: tl1, hd2 :: tl2 ->
+          if hd1 = v then
+            hd2
+          else
+            search v tl1 tl2
+    
 
 
     (* val depthFirstMinmax : int -> bool -> bool -> Rep.game -> int *)
-    open Representation
+    (* objective : return the evaluation of the game state *)
+    let depthFirstMinmax depth player gameState = 
+      let rec depthFirstMinmax_aux depth player gameState = 
+        if depth = 0 || (Eval.is_leaf player gameState) then Eval.evaluate player gameState
+        else
+          let list_moves = (Rep.legal_moves player gameState) in
+          let list_eval = List.map (fun x -> depthFirstMinmax_aux (depth-1) (not player) (Rep.play player x gameState)) list_moves in
+          if player then max_number_list list_eval else min_number_list list_eval
+      in
+      depthFirstMinmax_aux depth player gameState
 
-    let depthFirstMinmax depth maximizingPlayer movingPlayer gameState = 
 
-    (* val minimax : int -> bool -> Rep.game -> Rep.move *)
-    let minimax depth player gameState  =
-      let list_moves = (Rep.legal_moves player gameState) in
-      List.nth list_moves 0
-    end 
-
+  (* val minimax : int -> bool -> Rep.game -> Rep.move *)
+  (* objective : return the best move for the player *)
+  let minimax depth player gameState = 
+    let list_moves = (Rep.legal_moves player gameState) in
+    let list_eval = List.map (fun x -> depthFirstMinmax depth (not player) (Rep.play player x gameState)) list_moves in
+    List.iter (fun x -> print_int x; print_string " ") list_eval;
+    print_newline();
+    print_int (max_number_list list_eval);
+    print_newline();
+    search (max_number_list list_eval) list_eval list_moves
+  end
 
 
 (* module FMinimaxO :
