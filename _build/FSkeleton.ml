@@ -19,7 +19,7 @@ module FSkeleton
      (Eval  : EVAL with type game = Rep.game) 
      (Minimax : MINIMAX with type game = Rep.game and  type move = Rep.move) = 
    struct
-     let depth = ref 4
+     let depth = ref 6
      exception Won
      exception Lost
      exception Nil

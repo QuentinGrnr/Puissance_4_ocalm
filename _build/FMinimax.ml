@@ -63,10 +63,6 @@ module FMinimaxO
   let minimax depth player gameState = 
     let list_moves = (Rep.legal_moves player gameState) in
     let list_eval = List.map (fun x -> depthFirstMinmax depth (not player) (Rep.play player x gameState)) list_moves in
-    List.iter (fun x -> print_int x; print_string " ") list_eval;
-    print_newline();
-    print_int (max_number_list list_eval);
-    print_newline();
     search (max_number_list list_eval) list_eval list_moves
   end
 
